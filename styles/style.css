@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+.app-title {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.background {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b");
+  background-size: cover;
+  background-position: center;
+}
+
+.main-container {
+  display: flex;
+  gap: 24px;
+    margin-top: 80px; /
+}
+
+.main-box {
+  width: 650px;
+  height: 560px;
+  padding: 36px;
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  color: white;
+}
+
+.weather-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 260px;
+}
+
+.city {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.condition {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.temperature {
+  font-size: 92px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.locations-side {
+  width: 250px;
+  height: 300px;
+  padding: 32px;
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-top: 260px; /
+}
+
+.locations-title {
+  margin: 0 0 22px;
+  font-size: 16px;
+}
+
+.locations-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.locations-list li {
+  font-size: 14px;
+  color: #00BFFF;
+  cursor: pointer;
+}
