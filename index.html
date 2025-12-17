@@ -11,49 +11,49 @@
   <div class="app-title">WeatherDesk.com</div>
 
   <div class="search-bar">
-    <input type="text" placeholder="Search city..." />
-    <button>🔍</button>
+    <input id="searchInput" type="text" placeholder="Search city..." />
+    <button id="searchBtn">🔍</button>
   </div>
 
   <div class="background">
     <div class="main-container">
 
       <a href="/5dayforcast.html" class="main-box-link">
+        <button id="favoriteBtn" class="favorite-btn">⭐ Add to Favorites</button>
+
+
         <div class="main-box">
           <div class="weather-side">
-            <h1 class="city">Stockton, CA, US</h1>
+            <h1 id="cityName" class="city">--</h1>
 
             <div class="weather-bottom">
-              <p class="condition">Cloudy / Overcast</p>
-              <div class="temperature">46° / 42°</div>
+              <p id="condition" class="condition">--</p>
+              <div id="temperature" class="temperature">-- / --</div>
+
               <div class="details">
                 <div class="detail-row">
                   <span>Humidity</span>
-                  <span>88%</span>
+                  <span id="humidity">--</span>
                 </div>
                 <div class="detail-row">
                   <span>Wind</span>
-                  <span>1 mph S/E</span>
+                  <span id="wind">--</span>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </a>
 
       <div class="locations-side">
-        <h2 class="locations-title">Popular Locations</h2>
-        <ul class="locations-list">
-          <li>Stockton</li>
-          <li>San Francisco</li>
-          <li>New York</li>
-          <li>Chicago</li>
-          <li>Los Angeles</li>
-        </ul>
+        <h2 class="locations-title">Favorite Locations</h2>
+        <ul id="favoritesList" class="locations-list"></ul>
       </div>
 
     </div>
   </div>
 
+<script src="/scripts/app.js"></script>
 </body>
 </html>

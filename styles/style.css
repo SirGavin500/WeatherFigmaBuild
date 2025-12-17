@@ -13,7 +13,7 @@ body {
 }
 
 .home .background {
-  background-image: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b");
+  background-image: url("/assets/MainBG.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -79,12 +79,12 @@ body {
 }
 
 .home .main-box {
-  height: 550px;
+  height: 511px;
   width: 570px;
   padding: 36px;
   border-radius: 22px;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(14px);
+  background-image: url("/assets/Cloudy\ overcast2.PNG");
+  background-size: cover;
 }
 
 .forecast-page .main-box {
@@ -126,7 +126,6 @@ body {
   display: flex;
   justify-content: center;
   gap: 8px;
-  opacity: 0.85;
 }
 
 .locations-side {
@@ -161,6 +160,8 @@ body {
   font-size: 25px;
   font-weight: bold;
   color: #00BFFF;
+    cursor: pointer;
+
 }
 
 .forecast-page .forecast-title {
@@ -227,10 +228,12 @@ body {
 .forecast-page .favorites {
   margin-top: 10px;
   text-align: center;
+  
 }
 
 .forecast-page .fav-city {
   color: #3fa9f5;
+  
 }
 .forcast-title{
   text-align: center;
@@ -248,6 +251,7 @@ body {
 .fav-city a {
   color: #3fa9f5;
   text-decoration: none;
+  
 }
 
 .fav-city a:hover {
@@ -261,4 +265,15 @@ body {
 .main-box-link .main-box a {
   color: inherit;        
   text-decoration: none; 
+}
+.favorite-btn {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(0, 191, 255, 0.9);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative; /* allows offset without affecting layout */
+  top: -20px; /* move button up 15px */
 }
