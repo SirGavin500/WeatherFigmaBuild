@@ -3,34 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather App</title>
+  <title>WeatherDesk.com</title>
   <link rel="stylesheet" href="/styles/style.css" />
 </head>
-<body>
+<body class="home">
 
   <div class="app-title">WeatherDesk.com</div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search city..." />
+    <button>🔍</button>
+  </div>
 
   <div class="background">
     <div class="main-container">
 
-      <div class="main-box">
-        <div class="weather-side">
-          <h1 class="city">Stockton, CA, US</h1>
-          <p class="condition">Cloudy / Overcast</p>
-          <div class="temperature">46° / 42°</div>
+      <a href="/5dayforcast.html" class="main-box-link">
+        <div class="main-box">
+          <div class="weather-side">
+            <h1 class="city">Stockton, CA, US</h1>
 
-          <div class="details">
-            <div class="detail-row">
-              <span>Humidity</span>
-              <span>88%</span>
-            </div>
-            <div class="detail-row">
-              <span>Wind</span>
-              <span>1 mph S/E</span>
+            <div class="weather-bottom">
+              <p class="condition">Cloudy / Overcast</p>
+              <div class="temperature">46° / 42°</div>
+              <div class="details">
+                <div class="detail-row">
+                  <span>Humidity</span>
+                  <span>88%</span>
+                </div>
+                <div class="detail-row">
+                  <span>Wind</span>
+                  <span>1 mph S/E</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
 
       <div class="locations-side">
         <h2 class="locations-title">Popular Locations</h2>
