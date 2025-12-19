@@ -201,7 +201,7 @@ body {
 
 .forecast-page .card {
   width: 260px;
-  height: 400px; 
+  height: 400px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -209,21 +209,24 @@ body {
 }
 
 .forecast-page .card img {
-  height: 50%; 
+  flex: 1;           
   width: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .forecast-page .card-info {
-  height: 50%; 
+  flex: 1;          
   background: #6f7278;
   color: white;
+  box-sizing: border-box;  
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 
 .forecast-page .favorites {
   margin-top: 10px;
@@ -319,3 +322,13 @@ body {
 .forecast-page {
   overflow: hidden;
 }
+.forecast-page .forecast-title {
+  margin-top: -40px;
+}
+.forecast-page .weather-side a {
+  display: inline-block;
+  margin-top: 40px; 
+  color: white;
+  text-decoration: none;
+}
+
