@@ -1,0 +1,4 @@
+Peer Review 1 : Sammer Saqa
+You did an awesome job on this! The app works great—it pulls in real weather data and the 'favorites' list is a huge win. The best part is using that sunset background with the blurry glass cards makes it look like a high-end. You also made the main temperature big and bold, which makes it super easy to read.
+
+There are just a few small things to fix to make it perfect. Some of the white text is a bit hard to see against the bright clouds, and you have one broken weather icon that isn't showing up. Also, if you make the search bar a little thinner, it will match your original Figma design exactly!
