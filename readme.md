@@ -5,4 +5,6 @@ There are just a few small things to fix to make it perfect. Some of the white t
 
 <!-- The Weather Icon isnt broken its just there was only 4  icons to work with only so the correct one wont always be displayed  -->
 
-Peer Review 2:
+Peer Review 2: Xavier 
+Everything looks good to me I like how you made it say what the weather is instead of a icon, made the favorite button able to press the star, make the favorite list come up, I like the simplest look make it look like a real website, workers as intend too.
+Problems: I notice when you go to 5 day forecast it hard to see all the 5 card as the end two are not kind of going into the corner of the screen, one doesn't produce a image inside the box, maybe change the color because when i search Tokay the favorite list color blends in with the background but beside that it looks good to me.
