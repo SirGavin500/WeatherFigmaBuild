@@ -1,4 +1,4 @@
-const API_KEY = "";
+import { API_KEY } from "./env.js";
 
 
 console.log("searchInput:", document.getElementById("searchInput"));
