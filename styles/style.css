@@ -83,7 +83,7 @@ body {
   width: 570px;
   padding: 36px;
   border-radius: 22px;
-  background-image: url("/assets/Cloudy\ overcast2.PNG");
+  background-image: url("/assets/Cloudy overcast2.PNG");
   background-size: cover;
 }
 
@@ -126,6 +126,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 8px;
+  opacity: 0.85;
 }
 
 .locations-side {
@@ -160,8 +161,6 @@ body {
   font-size: 25px;
   font-weight: bold;
   color: #00BFFF;
-    cursor: pointer;
-
 }
 
 .forecast-page .forecast-title {
@@ -175,7 +174,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 32px;
-  margin-top: 20px;}
+  margin-top: 20px;
+}
 
 .card {
   width: 170px;
@@ -228,16 +228,16 @@ body {
 .forecast-page .favorites {
   margin-top: 10px;
   text-align: center;
-  
 }
 
 .forecast-page .fav-city {
   color: #3fa9f5;
-  
 }
-.forcast-title{
+
+.forcast-title {
   text-align: center;
 }
+
 .main-box-link {
   text-decoration: none;
   cursor: pointer;       
@@ -248,15 +248,16 @@ body {
   transform: scale(1.02);
   transition: transform 0.2s;
 }
+
 .fav-city a {
   color: #3fa9f5;
   text-decoration: none;
-  
 }
 
 .fav-city a:hover {
   text-decoration: underline; 
 }
+
 .main-box-link .main-box,
 .main-box-link .main-box * {
   color: white;          
@@ -266,6 +267,7 @@ body {
   color: inherit;        
   text-decoration: none; 
 }
+
 .favorite-btn {
   padding: 10px 18px;
   border-radius: 20px;
@@ -274,6 +276,43 @@ body {
   color: white;
   font-size: 14px;
   cursor: pointer;
-  position: relative; /* allows offset without affecting layout */
-  top: -20px; /* move button up 15px */
+  position: relative;
+  top: -20px; 
 }
+
+
+
+.locations-list {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.forecast-icon img {
+  margin-top: 30px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+
+.forecast-icon img {
+  width: 90px;
+}
+
+.card-info {
+  height: 50%;
+  background: #6f7278;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+

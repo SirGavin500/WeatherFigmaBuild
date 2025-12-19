@@ -1,4 +1,5 @@
-const API_KEY = ""; 
+const API_KEY = "6837eb09a634c953a8c1f7bff7cf7340";
+
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 
@@ -18,115 +19,124 @@ let currentCity = localStorage.getItem("currentCity") || "Stockton";
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 function saveData() {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    localStorage.setItem("currentCity", currentCity);
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  localStorage.setItem("currentCity", currentCity);
 }
 
 async function loadCurrentWeather(city) {
-    if (!cityNameEl) return;
-    try {
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${API_KEY}`);
-        const data = await res.json();
-        if (data.cod !== 200) throw new Error();
+  if (!cityNameEl) return;
 
-        cityNameEl.textContent = `${data.name}, ${data.sys.country}`;
-        conditionEl.textContent = data.weather[0].description;
-        temperatureEl.textContent = `${Math.round(data.main.temp_max)}° / ${Math.round(data.main.temp_min)}°`;
-        humidityEl.textContent = `${data.main.humidity}%`;
-        windEl.textContent = `${data.wind.speed} mph`;
-    } catch {
-        cityNameEl.textContent = "City not found";
-        conditionEl.textContent = "--";
-        temperatureEl.textContent = "-- / --";
-        humidityEl.textContent = "--";
-        windEl.textContent = "--";
-    }
+  try {
+    const res = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${API_KEY}`
+    );
+    const data = await res.json();
+
+    cityNameEl.textContent = `${data.name}, ${data.sys.country}`;
+    conditionEl.textContent = data.weather[0].description;
+    temperatureEl.textContent = `${Math.round(data.main.temp_max)}° / ${Math.round(data.main.temp_min)}°`;
+    humidityEl.textContent = `${data.main.humidity}%`;
+    windEl.textContent = `${data.wind.speed} mph`;
+  } catch {
+    cityNameEl.textContent = "City not found";
+  }
 }
 
 function renderFavorites() {
-    if (!favoritesList) return;
-    favoritesList.innerHTML = "";
-    favorites.forEach(city => {
-        const li = document.createElement("li");
-        li.textContent = city;
-        li.onclick = () => {
-            currentCity = city;
-            saveData();
-            loadCurrentWeather(city);
-        };
-        favoritesList.appendChild(li);
-    });
+  if (!favoritesList) return;
+
+  favoritesList.innerHTML = "";
+
+  favorites.forEach(city => {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <span>${city}</span>
+      <button class="remove-btn">✕</button>
+    `;
+
+    li.querySelector("span").onclick = () => {
+      currentCity = city;
+      saveData();
+      loadCurrentWeather(city);
+    };
+
+    li.querySelector("button").onclick = () => {
+      favorites = favorites.filter(c => c !== city);
+      saveData();
+      renderFavorites();
+    };
+
+    favoritesList.appendChild(li);
+  });
+}
+
+function getWeatherIcon(desc) {
+  const text = desc.toLowerCase();
+
+  if (text.includes("thunder")) return "/assets/lightning storm.jpg";
+  if (text.includes("rain")) return "/assets/rain lightning storm.jpg";
+  if (text.includes("overcast")) return "/assets/cloudy-overcast.jpg";
+  if (text.includes("cloud")) return "/assets/partly-cloudy.png";
+  return "/assets/sunny.jpg";
 }
 
 async function loadForecast(city) {
-    if (!forecastContainer) return;
-    try {
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${API_KEY}`);
-        const data = await res.json();
-        if (data.cod !== "200") throw new Error();
+  if (!forecastContainer) return;
 
-        forecastCityEl.textContent = `${data.city.name} 5-Day Forecast`;
-        forecastContainer.innerHTML = "";
+  const res = await fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${API_KEY}`
+  );
+  const data = await res.json();
 
-        const seen = {};
-        const fiveDays = data.list.filter(item => {
-            const date = item.dt_txt.split(" ")[0];
-            if (!seen[date]) {
-                seen[date] = true;
-                return true;
-            }
-            return false;
-        }).slice(0, 5);
+  forecastCityEl.textContent = `${data.city.name} 5-Day Forecast`;
+  forecastContainer.innerHTML = "";
 
-        fiveDays.forEach(day => {
-            const card = document.createElement("div");
-            card.className = "card";
-            card.innerHTML = `
-                <div class="card-info">
-                    <div class="day">${new Date(day.dt_txt).toLocaleDateString("en-US",{ weekday: "short" })}</div>
-                    <div class="desc">${day.weather[0].description}</div>
-                    <div class="temp">${Math.round(day.main.temp_max)}° / ${Math.round(day.main.temp_min)}°</div>
-                </div>
-            `;
-            forecastContainer.appendChild(card);
-        });
-    } catch {
-        forecastContainer.innerHTML = "<p>Could not load forecast</p>";
-    }
+  const days = {};
+  data.list.forEach(item => {
+    const date = item.dt_txt.split(" ")[0];
+    if (!days[date]) days[date] = item;
+  });
+
+  Object.values(days).slice(0, 5).forEach(day => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <div class="forecast-icon">
+        <img src="${getWeatherIcon(day.weather[0].description)}">
+      </div>
+      <div class="card-info">
+        <div>${new Date(day.dt_txt).toLocaleDateString("en-US",{weekday:"short"})}</div>
+        <div>${day.weather[0].description}</div>
+        <div>${Math.round(day.main.temp_max)}° / ${Math.round(day.main.temp_min)}°</div>
+      </div>
+    `;
+
+    forecastContainer.appendChild(card);
+  });
 }
 
-if (searchBtn && searchInput) {
-    searchBtn.onclick = () => {
-        const city = searchInput.value.trim();
-        if (!city) return;
-        currentCity = city;
-        saveData();
-        loadCurrentWeather(city);
-    };
-
-    searchInput.onkeydown = (e) => {
-        if (e.key === "Enter") searchBtn.onclick();
-    };
+if (searchBtn) {
+  searchBtn.onclick = () => {
+    currentCity = searchInput.value.trim();
+    saveData();
+    loadCurrentWeather(currentCity);
+  };
 }
 
 if (favoriteBtn) {
-    favoriteBtn.onclick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (!favorites.includes(currentCity)) {
-            favorites.push(currentCity);
-            saveData();
-            renderFavorites();
-        }
-    };
+  favoriteBtn.onclick = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!favorites.includes(currentCity)) {
+      favorites.push(currentCity);
+      saveData();
+      renderFavorites();
+    }
+  };
 }
 
-if (cityNameEl) {
-    renderFavorites();
-    loadCurrentWeather(currentCity);
-}
-
-if (forecastContainer) {
-    loadForecast(currentCity);
-}
+renderFavorites();
+loadCurrentWeather(currentCity);
+loadForecast(currentCity);
