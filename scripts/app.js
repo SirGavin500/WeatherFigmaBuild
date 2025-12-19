@@ -1,4 +1,4 @@
-const API_KEY = "6837eb09a634c953a8c1f7bff7cf7340";
+const API_KEY = "";
 
 
 console.log("searchInput:", document.getElementById("searchInput"));
