@@ -45,7 +45,7 @@ body {
 }
 
 .search-bar input {
-  padding: 10px 15px;
+  padding: 15px 35px; /* made the size of the search bar bigger*/
   border-radius: 25px;
   border: none;
   outline: none;
